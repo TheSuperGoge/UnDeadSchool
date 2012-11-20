@@ -34,7 +34,7 @@ namespace UnDeadSchool
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            Components.Add(new Game3DComponent(this, Vector3.Zero, "Char_Test"));
             base.Initialize();
         }
 
