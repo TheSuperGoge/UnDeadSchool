@@ -27,18 +27,35 @@ namespace UnDeadSchool
 
         protected override void LoadContent()
         {
-           texture_ =  Game.Content.Load<Texture2D>(textureName_);
+            texture_ =  Game.Content.Load<Texture2D>(textureName_);
             base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
-            world_ = Matrix.CreateBillboard(position_, position_ - Vector3.Forward, Vector3.Up, null);
+            position_ -= Vector3.Forward / 100;
+            world_ = Matrix.CreateScale(new Vector3(texture_.Width,texture_.Height,1)/10) * Matrix.CreateTranslation(position_);
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            Camera cam = (Camera)Game.Services.GetService(typeof(Camera));
+
+            BasicEffect effect = new BasicEffect(Game.GraphicsDevice);
+
+            effect.World = world_;
+            effect.View = cam.View;
+            effect.Projection = cam.Projection;
+
+            effect.TextureEnabled = true;
+            effect.Texture = texture_;
+            
+            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
+            {
+                pass.Apply();
+                Billboard.draw(Game.GraphicsDevice);
+            }
             base.Draw(gameTime);
         }
     }

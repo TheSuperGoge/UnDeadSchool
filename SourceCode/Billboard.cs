@@ -7,10 +7,10 @@ public static class Billboard
     #region positions
     static Vector3[] positions = new Vector3[]
     {
-        new Vector3(    0.5f,   0,  1),
-        new Vector3(    -0.5f,  0,  1),
-        new Vector3(    0.5f,   0,  0),
-        new Vector3(    -0.5f,  0,  0),
+        new Vector3(    -0.5f,   1,  0),
+        new Vector3(    0.5f,  1,  0),
+        new Vector3(    -0.5f,   0,  0),
+        new Vector3(    0.5f,  0,  0),
     };
     #endregion
     #region texturePoints
@@ -31,7 +31,6 @@ public static class Billboard
         new VertexPositionTexture(positions[3],texturePoints[3]),
     };
     #endregion
-
     static VertexBuffer vBuffer;
 
     static VertexBuffer CreateVertexBuffer(GraphicsDevice device)

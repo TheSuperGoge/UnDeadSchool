@@ -34,7 +34,12 @@ namespace UnDeadSchool
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            Components.Add(new Game3DComponent(this, Vector3.Zero, "Char_Test"));
+            Camera cam = new Camera(this, Matrix.CreateWorld(Vector3.Zero, Vector3.Forward, Vector3.Up));
+            Components.Add(cam);
+            Services.AddService(typeof(Camera), cam);
+            Components.Add(new Game3DComponent(this, 20*Vector3.Forward, "Char_Test"));
+            Components.Add(new Game3DComponent(this, new Vector3(10, 0, -25), "Char_Test"));
+            Components.Add(new Game3DComponent(this, new Vector3(-7, 0, -15), "Char_Test"));
             base.Initialize();
         }
 
@@ -81,7 +86,6 @@ namespace UnDeadSchool
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
 
