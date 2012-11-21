@@ -31,13 +31,15 @@ namespace UnDeadSchool
         {
             world_ = world;
             Mode = CameraMode.PROJECTIVE;
+            string shit = CameraMode.PROJECTIVE.ToString();
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.M))
+            KeyboardManager KManager = (KeyboardManager)Game.Services.GetService(typeof(KeyboardManager));
+            if (KManager.IsKeyPressed(Keys.M))
             {
-                Mode = (CameraMode)((int)(Mode + 1) % 2);
+                Mode = (CameraMode)(((int)Mode + 1) % 2);
             }
             view_ = Matrix.CreateLookAt(world_.Translation, world_.Forward + world_.Translation, world_.Up);
             switch (Mode)

@@ -39,7 +39,6 @@ namespace UnDeadSchool
 
         public override void Draw(GameTime gameTime)
         {
-            Camera cam = (Camera)Game.Services.GetService(typeof(Camera));
 
             BasicEffect effect = ((EffectManager)Game.Services.GetService(typeof(EffectManager))).effect;
 
