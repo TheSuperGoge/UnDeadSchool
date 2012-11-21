@@ -33,7 +33,6 @@ namespace UnDeadSchool
 
         public override void Update(GameTime gameTime)
         {
-            position_ -= Vector3.Forward / 100;
             world_ = Matrix.CreateScale(new Vector3(texture_.Width,texture_.Height,1)/10) * Matrix.CreateTranslation(position_);
             base.Update(gameTime);
         }
@@ -42,11 +41,9 @@ namespace UnDeadSchool
         {
             Camera cam = (Camera)Game.Services.GetService(typeof(Camera));
 
-            BasicEffect effect = new BasicEffect(Game.GraphicsDevice);
+            BasicEffect effect = ((EffectManager)Game.Services.GetService(typeof(EffectManager))).effect;
 
             effect.World = world_;
-            effect.View = cam.View;
-            effect.Projection = cam.Projection;
 
             effect.TextureEnabled = true;
             effect.Texture = texture_;
