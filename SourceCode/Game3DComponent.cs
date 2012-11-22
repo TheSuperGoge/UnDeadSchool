@@ -13,7 +13,20 @@ namespace UnDeadSchool
 {
     public class Game3DComponent : DrawableGameComponent
     {
-        Vector3 position_;
+        public static bool operator <(Game3DComponent a, Game3DComponent b)
+        {
+            if (a.position_.Z < b.position_.Z)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator >(Game3DComponent a, Game3DComponent b)
+        {
+            return b > a;
+        }
+
+        public Vector3 position_ { get; protected set; }
         Matrix world_;
         string textureName_;
         Texture2D texture_;

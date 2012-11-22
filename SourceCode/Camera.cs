@@ -41,6 +41,15 @@ namespace UnDeadSchool
             {
                 Mode = (CameraMode)(((int)Mode + 1) % 2);
             }
+            float X = KManager.IsKeyDown(Keys.Right) ? 1 : 0;
+            X -= KManager.IsKeyDown(Keys.Left) ? 1 : 0;
+            float Z = KManager.IsKeyDown(Keys.Down) ? 1 : 0;
+            Z -= KManager.IsKeyDown(Keys.Up) ? 1 : 0;
+            Vector3 move = new Vector3(X, 0, Z);
+            if (move.Length() > 0)
+            {
+                world_.Translation += move;
+            }
             view_ = Matrix.CreateLookAt(world_.Translation, world_.Forward + world_.Translation, world_.Up);
             switch (Mode)
             {

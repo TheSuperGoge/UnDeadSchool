@@ -15,6 +15,7 @@ namespace UnDeadSchool
             : base(game)
         {
             effect = new BasicEffect(game.GraphicsDevice);
+            
         }
 
         public override void Update(GameTime gameTime)
