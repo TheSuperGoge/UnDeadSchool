@@ -25,6 +25,7 @@ namespace UnDeadSchool
         {
             previousState = currentState;
             currentState = Keyboard.GetState();
+
             base.Update(gameTime);
         }
 

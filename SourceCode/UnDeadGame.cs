@@ -43,7 +43,7 @@ namespace UnDeadSchool
             Components.Add(KManager);
             Services.AddService(typeof(KeyboardManager), KManager);
 
-            Camera cam = new Camera(this, Matrix.CreateWorld(new Vector3(0,10,0), new Vector3(0,-1,-5), Vector3.Up));
+            Camera cam = new Camera(this, Matrix.CreateWorld(new Vector3(0,5,0), new Vector3(0,-1,-10), Vector3.Up));
             Components.Add(cam);
             Services.AddService(typeof(Camera), cam);
 
