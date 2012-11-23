@@ -33,7 +33,8 @@ namespace UnDeadSchool
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            ResourceManager<Texture2D>.LoadDirectory(Content, "");
+
             EffectManager EManager = new EffectManager(this);
             Components.Add(EManager);
             Services.AddService(typeof(EffectManager), EManager);
@@ -42,14 +43,17 @@ namespace UnDeadSchool
             Components.Add(KManager);
             Services.AddService(typeof(KeyboardManager), KManager);
 
-            Camera cam = new Camera(this, Matrix.CreateWorld(new Vector3(0,5,0), new Vector3(0,-1,-10), Vector3.Up));
+            Camera cam = new Camera(this, Matrix.CreateWorld(new Vector3(0,10,0), new Vector3(0,-1,-5), Vector3.Up));
             Components.Add(cam);
             Services.AddService(typeof(Camera), cam);
 
-            Components.Add(new Game3DComponent(this, new Vector3(0,0,-20), "SnowMan"));
-            Components.Add(new Game3DComponent(this, new Vector3(1, 0, -10), "Char_Test"));
-            Components.Add(new Game3DComponent(this, new Vector3(2, 0, -25), "SnowMan"));
-            Components.Add(new Game3DComponent(this, new Vector3(5, 0, -15), "Tony_DJ"));
+            Game3DCollection level = new Game3DCollection(this);
+            Components.Add(level);
+
+            level.Add(new Game3DComponent(this, new Vector3(0, 0, -20), "Char_Test"));
+            level.Add(new Game3DComponent(this, new Vector3(1, 0, -10), "SnowMan"));
+            level.Add(new Game3DComponent(this, new Vector3(2, 0, -25), "Tony_DJ"));
+            level.Add(new Game3DComponent(this, new Vector3(5, 0, -15), "Char_Test"));
 
             base.Initialize();
         }
@@ -62,6 +66,8 @@ namespace UnDeadSchool
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            
 
             // TODO: use this.Content to load your game content here
         }
@@ -96,15 +102,13 @@ namespace UnDeadSchool
             spriteBatch.Begin();
             return base.BeginDraw();
         }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-
-            // TODO: Add your drawing code here
-
             base.Draw(gameTime);
         }
         protected override void EndDraw()

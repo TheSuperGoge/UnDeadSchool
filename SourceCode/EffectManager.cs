@@ -15,6 +15,9 @@ namespace UnDeadSchool
             : base(game)
         {
             effect = new BasicEffect(game.GraphicsDevice);
+              RasterizerState Rstate = new RasterizerState();
+            Rstate.ScissorTestEnable = true;
+            Game.GraphicsDevice.RasterizerState = Rstate;
             
         }
 

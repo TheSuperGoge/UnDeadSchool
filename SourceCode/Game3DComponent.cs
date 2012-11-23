@@ -26,6 +26,11 @@ namespace UnDeadSchool
             return b > a;
         }
 
+        public static int CompareGame3DComponentsByZ(Game3DComponent a, Game3DComponent b)
+        {
+            return (int)(a.position_.Z - b.position_.Z);
+        }
+
         public Vector3 position_ { get; protected set; }
         Matrix world_;
         string textureName_;
@@ -38,9 +43,13 @@ namespace UnDeadSchool
             textureName_ = textureName;
         }
 
+        public void ForceLoad()
+        {
+            LoadContent();
+        }
         protected override void LoadContent()
         {
-            texture_ =  Game.Content.Load<Texture2D>(textureName_);
+            texture_ = ResourceManager<Texture2D>.Find(textureName_);
             base.LoadContent();
         }
 
