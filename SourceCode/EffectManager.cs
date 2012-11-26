@@ -15,10 +15,6 @@ namespace UnDeadSchool
             : base(game)
         {
             effect = new BasicEffect(game.GraphicsDevice);
-              RasterizerState Rstate = new RasterizerState();
-            Rstate.ScissorTestEnable = true;
-            Game.GraphicsDevice.RasterizerState = Rstate;
-            
         }
 
         public override void Update(GameTime gameTime)
@@ -26,7 +22,7 @@ namespace UnDeadSchool
             Camera cam = (Camera)Game.Services.GetService(typeof(Camera));
             effect.View = cam.View;
             effect.Projection = cam.Projection;
-            Game.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
+            Game.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
             base.Update(gameTime);
         }
     }

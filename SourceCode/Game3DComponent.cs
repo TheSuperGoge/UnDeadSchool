@@ -13,22 +13,10 @@ namespace UnDeadSchool
 {
     public class Game3DComponent : DrawableGameComponent
     {
-        public static bool operator <(Game3DComponent a, Game3DComponent b)
-        {
-            if (a.position_.Z < b.position_.Z)
-            {
-                return true;
-            }
-            return false;
-        }
-        public static bool operator >(Game3DComponent a, Game3DComponent b)
-        {
-            return b > a;
-        }
 
         public static int CompareGame3DComponentsByZ(Game3DComponent a, Game3DComponent b)
         {
-            return (int)(a.position_.Z - b.position_.Z);
+            return (int)(100*(a.position_.Z - b.position_.Z));
         }
 
         public Vector3 position_ { get; protected set; }

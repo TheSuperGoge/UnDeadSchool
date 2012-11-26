@@ -43,7 +43,7 @@ namespace UnDeadSchool
             Components.Add(KManager);
             Services.AddService(typeof(KeyboardManager), KManager);
 
-            Camera cam = new Camera(this, Matrix.CreateWorld(new Vector3(0,5,0), new Vector3(0,-1,-10), Vector3.Up));
+            Camera cam = new Camera(this, Matrix.CreateWorld(new Vector3(0,10,0), new Vector3(0,-1,-4), Vector3.Up));
             Components.Add(cam);
             Services.AddService(typeof(Camera), cam);
 
@@ -52,7 +52,7 @@ namespace UnDeadSchool
 
             level.Add(new Game3DComponent(this, new Vector3(0, 0, -20), "Char_Test"));
             level.Add(new Game3DComponent(this, new Vector3(1, 0, -10), "SnowMan"));
-            level.Add(new Game3DComponent(this, new Vector3(2, 0, -25), "Tony_DJ"));
+            level.Add(new Actor(this, new Vector3(2, 0, -5), "Tony_DJ"));
             level.Add(new Game3DComponent(this, new Vector3(5, 0, -15), "Char_Test"));
 
             base.Initialize();

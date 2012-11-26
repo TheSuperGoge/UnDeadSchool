@@ -41,5 +41,10 @@ namespace UnDeadSchool
         {
             return !IsKeyDown(key) && previousState.IsKeyDown(key);
         }
+
+        public int IsKeyDownShort(Keys key)
+        {
+            return IsKeyDown(key) ? 1 : 0;
+        }
     }
 }
